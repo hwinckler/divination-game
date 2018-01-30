@@ -1,10 +1,12 @@
+import random
 print("**************************************")
 print ("** Welcome to The Divination Game! **")
 print("**************************************")
 print("")
 
-sort_number = 42
+random_number = int(random.randrange(1,101))
 attempts_number = 3
+acertou = False
 
 for count in range(1, attempts_number + 1):
 
@@ -15,13 +17,17 @@ for count in range(1, attempts_number + 1):
         print("Invalid number!")
         continue
 
-    message = "right." if (guess_number == sort_number) else "wrong."
-    message_approximate = "The entered number is minor!" if guess_number < sort_number else "The entered numer is greater!" if guess_number > sort_number else ""
+    message = "right." if (guess_number == random_number) else "wrong."
+    message_approximate = "The entered number is minor!" if guess_number < random_number else "The entered numer is greater!" if guess_number > random_number else ""
 
     print("This number is", message, message_approximate)
     print("")
     
-    if guess_number == sort_number:
+    if guess_number == random_number:
+        acertou = True
         break
+
+if not acertou: 
+    print("The sorted number was: {}".format(random_number))
 
 print("End of game!")
